@@ -51,26 +51,26 @@ def spel() :
          |
     _____|""")
 
-woordenlijst = ["informatica", "informatiekunde", "spelletje", "aardigheidje", "scholier", "fotografie", "waardebepaling", "specialiteit", "verzekering", "universiteit", "heesterperk"]
+ woordenlijst = ["informatica", "informatiekunde", "spelletje", "aardigheidje", "scholier", "fotografie", "waardebepaling", "specialiteit", "verzekering", "universiteit", "heesterperk"]
 
-MogelijkeLetters = "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+ MogelijkeLetters = "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
 
-GeheimWoord = random.choice(woordenlijst)
-lengtewoord = len(GeheimWoord)
-streepjes = [" - "] *lengtewoord
-ja = "ja"
-nee = "nee"
+ GeheimWoord = random.choice(woordenlijst)
+ lengtewoord = len(GeheimWoord)
+ streepjes = [" - "] *lengtewoord
+ ja = "ja"
+ nee = "nee"
  
-game = True
+ game = True
 
-print("Welkom bij galgje!")
-print("Raad de letters van het woord en als je het woord denkt te weten,") 
-print("typ het dan in.")
-print()
-print("Het woord heeft " + str(lengtewoord) + " letters.")
-print(''.join(streepjes))
-print (GeheimWoord)
-while game == True:
+ print("Welkom bij galgje!")
+ print("Raad de letters van het woord en als je het woord denkt te weten,") 
+ print("typ het dan in.")
+ print()
+ print("Het woord heeft " + str(lengtewoord) + " letters.")
+ 
+ print (GeheimWoord)
+ while game == True:
    userGuess = input("raad een letter of het woord: ")
    if userGuess == GeheimWoord:
        print ("gefeliciteerd", "je hebt het woord geraden")
@@ -79,6 +79,19 @@ while game == True:
        print("Goed gedaan!!! je had alleen deze letters nodig om het woord te raden")
 
 
+ else:
+     if userGuess in GeheimWoord:
+         for idx, letter in enumerate(GeheimWoord):
+
+           if(letter == userGuess):
+            streepjes[idx] = userGuess
+     else:
+       Pogingen -= 1
+       drawgalgjes()
+     print(''.join(streepjes))
+    
+     if userGuess not in MogelijkeLetters:
+       Pogingen -= 1
 
 
 
